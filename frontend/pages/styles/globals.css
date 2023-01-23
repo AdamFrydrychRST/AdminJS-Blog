@@ -1,0 +1,32 @@
+::-webkit-scrollbar {
+  display: none;
+}
+
+.logo path {
+  width: 100%;
+  color: #000000;
+  stroke-width: 1px;
+  stroke-dashoffset: -300;
+  stroke-dasharray: 5000;
+  animation-name: icon;
+  animation-duration: 15s;
+  animation-iteration-count: initial;
+  animation-fill-mode: forwards;
+}
+
+@keyframes icon {
+  50% {
+    stroke-dashoffset: 0;
+    fill: transparent;
+  }
+  65% {
+    stroke-dashoffset: 0;
+    fill: #000000;
+    stroke-width: 1px;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    fill: #000000;
+    stroke-width: 1px;
+  }
+}

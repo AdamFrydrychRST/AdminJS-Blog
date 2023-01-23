@@ -1,0 +1,1 @@
+Blog website, that uses AdminJS as a backend and a database
