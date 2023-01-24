@@ -1,0 +1,20 @@
+# Install dependencies only when needed
+FROM docker.io/node:18.13-alpine as deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+WORKDIR /usr/src/app
+
+COPY . .
+
+RUN npm install --legacy-peer-deps
+
+# Production image, copy all the files and run next
+# ENV NODE_ENV production
+WORKDIR /usr/src/app
+# TODO - this is a hack to get the pg module to work, install pg driver directly
+RUN npm install
+
+RUN chown -R node:node .
+USER node
+EXPOSE 3001
+
+CMD ["ts-node", "index.ts"]

@@ -3,6 +3,7 @@ import express from 'express';
 import AdminJSExpress from '@adminjs/express';
 import Adapter, { Database, Resource } from '@adminjs/SQL';
 import cors from 'cors'
+import { componentLoader, Components } from './componentLoader'
 
 const PORT = 3001;
 
@@ -44,7 +45,14 @@ const start = async () => {
           },
         },
       },
+      {
+        resource: db.table('test')
+      }
     ],
+    componentLoader,
+    dashboard: {
+      component: Components.Dashboard
+    }
   });
 
 	const adminRouter = AdminJSExpress.buildRouter(admin);
